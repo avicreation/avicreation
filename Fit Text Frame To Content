@@ -1,0 +1,23 @@
+// Fit Text Frame To Content.jsx
+
+var rulerUnits = app.preferences.rulerUnits;
+app.preferences.rulerUnits = Units.POINTS;
+
+var doc = app.activeDocument;
+var active = doc.activeLayer;
+
+active.textItem.height = 10000;
+
+var bounds = active.boundsNoEffects;
+var top = bounds[1].value;
+var right = bounds[2].value;
+var bottom = bounds[3].value;
+var left = bounds[0].value;
+
+var width = right - left;
+var height = bottom - top;
+
+active.textItem.width = width;
+active.textItem.height = height;
+
+app.preferences.rulerUnits = rulerUnits;
